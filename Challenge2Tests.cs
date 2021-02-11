@@ -139,6 +139,7 @@ namespace Challenge_2
             driver.FindElement(By.Id("password")).SendKeys("password");
             driver.FindElement(By.Id("doLogin")).Click();
 
+            //TODO: Remove this
             Thread.Sleep(100);
             Assert.True(CheckCount(driver.FindElements(By.CssSelector(".read-false"))));
             driver.Close();
