@@ -26,11 +26,8 @@ namespace Challenge_2
             driver = new ChromeDriver();
             driver.Url = "https://automationintesting.online/#/admin";
             driver.FindElement(By.CssSelector("footer p a:nth-child(5)")).Click();
-            Thread.Sleep(1000);
             driver.FindElement(By.Id("username")).SendKeys("admin");
-            Thread.Sleep(1000);
             driver.FindElement(By.Id("password")).SendKeys("password");
-            Thread.Sleep(1000);
             driver.FindElement(By.Id("doLogin")).Click();
 
             Thread.Sleep(5000);
