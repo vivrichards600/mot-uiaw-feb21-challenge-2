@@ -119,16 +119,16 @@ namespace Challenge_2
         public void VerifyContactFormShowsSuccessMessage()
         {
             driver.Url = "https://automationintesting.online/";
-            Thread.Sleep(1000);
             driver.FindElement(By.CssSelector("input[placeholder=Name]")).SendKeys("TEST123");
             driver.FindElement(By.CssSelector("input[placeholder=Email]")).SendKeys("TEST123@TEST.COM");
             driver.FindElement(By.CssSelector("input[placeholder=Phone]")).SendKeys("01212121311");
             driver.FindElement(By.CssSelector("input[placeholder=Subject]")).SendKeys("TEsTEST");
             driver.FindElement(By.CssSelector("textarea")).SendKeys("TEsTESTTEsTESTTEsTEST");
-            Thread.Sleep(2000);
+
             driver.FindElement(By.XPath("//button[text()=\"Submit\"]")).Click();
 
-            Thread.Sleep(4000);
+            //TODO: Look to see how we can remove this
+            Thread.Sleep(100);
             Assert.True(driver.FindElement(By.CssSelector(".contact")).Text.Contains("Thanks for getting in touch"));
             driver.Close();
         }
