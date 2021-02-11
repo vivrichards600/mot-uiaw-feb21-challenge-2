@@ -134,15 +134,12 @@ namespace Challenge_2
         [Test]
         public void VerifyUnreadMessagesAreBolded()
         {
-            driver.Url = "https://automationintesting.online/#/admin/messages";
+            driver.Url = $"{baseUrl}#/admin/messages";
+            driver.FindElement(By.Id("username")).SendKeys("admin");
+            driver.FindElement(By.Id("password")).SendKeys("password");
+            driver.FindElement(By.Id("doLogin")).Click();
 
-            driver.FindElement(By.XPath("//div[@class=\"form-group\"][1]/input")).SendKeys("admin");
-            Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//div[@class=\"form-group\"][2]/input")).SendKeys("password");
-            Thread.Sleep(1000);
-            driver.FindElement(By.ClassName("float-right")).Click();
-
-            Thread.Sleep(3000);
+            Thread.Sleep(100);
             Assert.True(CheckCount(driver.FindElements(By.CssSelector(".read-false"))));
             driver.Close();
         }
