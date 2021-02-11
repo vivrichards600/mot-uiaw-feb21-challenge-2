@@ -18,13 +18,29 @@ namespace Challenge_2
 
     public class Challenge2Tests
     {
+        private IWebDriver driver;
+        private String baseUrl = "https://automationintesting.online/";
+
+        #region "Setup and tear down"
+        [SetUp]
+        public void Init()
+        {
+            driver = new ChromeDriver();
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+            driver.Quit();
+        }
+        #endregion
+
+
         //  Test one: Check to see if you can log in with valid credentials
         [Test]
         public void VerifyCanLoginWithValidCredentials()
         {
-            IWebDriver driver;
-            driver = new ChromeDriver();
-            driver.Url = "https://automationintesting.online/#/admin";
+            driver.Url = $"{baseUrl}#/admin";
             driver.FindElement(By.Id("username")).SendKeys("admin");
             driver.FindElement(By.Id("password")).SendKeys("password");
             driver.FindElement(By.Id("doLogin")).Click();
@@ -44,9 +60,7 @@ namespace Challenge_2
         [Test]
         public void VerifyRoomsAreSavedAndDisplayedInUI()
         {
-            IWebDriver driver;
-            driver = new ChromeDriver();
-            driver.Url = "https://automationintesting.online/#/admin";
+            driver.Url = $"{baseUrl}#/admin";
             driver.FindElement(By.Id("username")).SendKeys("admin");
             driver.FindElement(By.Id("password")).SendKeys("password");
             driver.FindElement(By.Id("doLogin")).Click();
@@ -69,9 +83,7 @@ namespace Challenge_2
         [Test]
         public void VerifyConfirmMessageAppearsWhenBrandingIsUpdated()
         {
-            IWebDriver driver;
-            driver = new ChromeDriver();
-            driver.Url = "https://automationintesting.online/#/admin";
+            driver.Url = $"{baseUrl}#/admin";
             driver.FindElement(By.CssSelector("footer p a:nth-child(5)")).Click();
             Thread.Sleep(1000);
             driver.FindElement(By.XPath("//div[@class=\"form-group\"][1]/input")).SendKeys("admin");
@@ -80,7 +92,7 @@ namespace Challenge_2
             Thread.Sleep(1000);
             driver.FindElement(By.ClassName("float-right")).Click();
 
-            driver.Url = "https://automationintesting.online/#/admin/branding";
+            driver.Url = $"{baseUrl}#/admin/branding";
 
             Thread.Sleep(5000);
 
@@ -106,8 +118,6 @@ namespace Challenge_2
         [Test]
         public void VerifyContactFormShowsSuccessMessage()
         {
-            IWebDriver driver;
-            driver = new ChromeDriver();
             driver.Url = "https://automationintesting.online/";
             Thread.Sleep(1000);
             driver.FindElement(By.CssSelector("input[placeholder=Name]")).SendKeys("TEST123");
@@ -127,8 +137,6 @@ namespace Challenge_2
         [Test]
         public void VerifyUnreadMessagesAreBolded()
         {
-            IWebDriver driver;
-            driver = new ChromeDriver();
             driver.Url = "https://automationintesting.online/#/admin/messages";
 
             driver.FindElement(By.XPath("//div[@class=\"form-group\"][1]/input")).SendKeys("admin");
