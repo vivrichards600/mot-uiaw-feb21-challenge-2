@@ -116,13 +116,13 @@ namespace Challenge_2
         public void VerifyContactFormShowsSuccessMessage()
         {
             driver.Url = "https://automationintesting.online/";
-            driver.FindElement(By.CssSelector("input[placeholder=Name]")).SendKeys("TEST123");
-            driver.FindElement(By.CssSelector("input[placeholder=Email]")).SendKeys("TEST123@TEST.COM");
-            driver.FindElement(By.CssSelector("input[placeholder=Phone]")).SendKeys("01212121311");
-            driver.FindElement(By.CssSelector("input[placeholder=Subject]")).SendKeys("TEsTEST");
-            driver.FindElement(By.CssSelector("textarea")).SendKeys("TEsTESTTEsTESTTEsTEST");
+            driver.FindElement(By.Id("name")).SendKeys("TEST123");
+            driver.FindElement(By.Id("email")).SendKeys("TEST123@TEST.COM");
+            driver.FindElement(By.Id("phone")).SendKeys("01212121311");
+            driver.FindElement(By.Id("subject")).SendKeys("TEsTEST");
+            driver.FindElement(By.Id("description")).SendKeys("TEsTESTTEsTESTTEsTEST");
 
-            driver.FindElement(By.XPath("//button[text()=\"Submit\"]")).Click();
+            driver.FindElement(By.Id("submitContact")).Click();
 
             //TODO: Look to see how we can remove this
             Thread.Sleep(100);
