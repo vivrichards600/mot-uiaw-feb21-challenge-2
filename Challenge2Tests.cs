@@ -46,15 +46,11 @@ namespace Challenge_2
             IWebDriver driver;
             driver = new ChromeDriver();
             driver.Url = "https://automationintesting.online/#/admin";
-            driver.FindElement(By.CssSelector("footer p a:nth-child(5)")).Click();
-            Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//div[@class=\"form-group\"][1]/input")).SendKeys("admin");
-            Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//div[@class=\"form-group\"][2]/input")).SendKeys("password");
-            Thread.Sleep(1000);
-            driver.FindElement(By.ClassName("float-right")).Click();
+            driver.FindElement(By.Id("username")).SendKeys("admin");
+            driver.FindElement(By.Id("password")).SendKeys("password");
+            driver.FindElement(By.Id("doLogin")).Click();
 
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
 
             driver.FindElement(By.CssSelector(".room-form > div:nth-child(1) input")).SendKeys("101");
             driver.FindElement(By.CssSelector(".room-form > div:nth-child(4) input")).SendKeys("101");
