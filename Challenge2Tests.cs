@@ -29,7 +29,7 @@ namespace Challenge_2
             driver.FindElement(By.Id("password")).SendKeys("password");
             driver.FindElement(By.Id("doLogin")).Click();
 
-            //TODO: Removing this
+            //TODO: Remove this
             Thread.Sleep(100);
 
             IWebElement webElement = driver.FindElement(By.ClassName("navbar-collapse"));
@@ -51,7 +51,7 @@ namespace Challenge_2
             driver.FindElement(By.Id("password")).SendKeys("password");
             driver.FindElement(By.Id("doLogin")).Click();
 
-            //TODO: Removing this
+            //TODO: Remove this
             Thread.Sleep(100);
 
             driver.FindElement(By.Id("roomNumber")).SendKeys("101");
