@@ -56,7 +56,6 @@ namespace Challenge_2
 
             driver.FindElement(By.Id("roomNumber")).SendKeys("101");
             driver.FindElement(By.Id("roomPrice")).SendKeys("101");
-            Thread.Sleep(1000);
             driver.FindElement(By.Id("createRoom")).Click();
 
             Thread.Sleep(100);
