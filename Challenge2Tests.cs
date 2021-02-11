@@ -30,7 +30,7 @@ namespace Challenge_2
             driver.FindElement(By.Id("password")).SendKeys("password");
             driver.FindElement(By.Id("doLogin")).Click();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(500);
 
             IWebElement webElement = driver.FindElement(By.ClassName("navbar-collapse"));
             Console.WriteLine(webElement.Text);
