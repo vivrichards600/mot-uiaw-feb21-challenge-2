@@ -54,12 +54,12 @@ namespace Challenge_2
             //TODO: Removing this
             Thread.Sleep(100);
 
-            driver.FindElement(By.CssSelector(".room-form > div:nth-child(1) input")).SendKeys("101");
-            driver.FindElement(By.CssSelector(".room-form > div:nth-child(4) input")).SendKeys("101");
+            driver.FindElement(By.Id("roomNumber")).SendKeys("101");
+            driver.FindElement(By.Id("roomPrice")).SendKeys("101");
             Thread.Sleep(1000);
-            driver.FindElement(By.ClassName("btn-outline-primary")).Click();
+            driver.FindElement(By.Id("createRoom")).Click();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(100);
 
             Assert.That(driver.FindElements(By.ClassName(".detail")).Count != 1);
             driver.Close();
