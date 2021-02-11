@@ -84,22 +84,19 @@ namespace Challenge_2
         public void VerifyConfirmMessageAppearsWhenBrandingIsUpdated()
         {
             driver.Url = $"{baseUrl}#/admin";
-            driver.FindElement(By.CssSelector("footer p a:nth-child(5)")).Click();
-            Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//div[@class=\"form-group\"][1]/input")).SendKeys("admin");
-            Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//div[@class=\"form-group\"][2]/input")).SendKeys("password");
-            Thread.Sleep(1000);
-            driver.FindElement(By.ClassName("float-right")).Click();
+            driver.FindElement(By.Id("username")).SendKeys("admin");
+            driver.FindElement(By.Id("password")).SendKeys("password");
+            driver.FindElement(By.Id("doLogin")).Click();
 
             driver.Url = $"{baseUrl}#/admin/branding";
 
-            Thread.Sleep(5000);
+            //TODO: Remove this
+            Thread.Sleep(200);
 
-            driver.FindElement(By.ClassName("form-control")).SendKeys("Test");
-            driver.FindElement(By.ClassName("btn-outline-primary")).Click();
+            driver.FindElement(By.Id("name")).SendKeys("Test");
+            driver.FindElement(By.Id("updateBranding")).Click();
 
-            Thread.Sleep(1001);
+            Thread.Sleep(100);
 
             int count = driver.FindElements(By.XPath("//button[text()=\"Close\"]")).Count;
 
