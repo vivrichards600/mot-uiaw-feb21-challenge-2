@@ -18,15 +18,11 @@ namespace Challenge_2
 
     public class Challenge2Tests : BasePage
     {
-      
-       
-
         //  Test one: Check to see if you can log in with valid credentials
         [Test]
         public void VerifyCanLoginWithValidCredentials()
         {
             loginPage.Login();
-
 
             IWebElement roomsLink = driver.FindElement(By.LinkText("Rooms"));
             Boolean title = roomsLink.Text.Contains("Rooms");
@@ -38,10 +34,7 @@ namespace Challenge_2
         [Test]
         public void VerifyRoomsAreSavedAndDisplayedInUI()
         {
-            LoginToAccount();
-
-            //TODO: Remove this
-            Thread.Sleep(100);
+            loginPage.Login();
 
             driver.FindElement(By.Id("roomNumber")).SendKeys("101");
             driver.FindElement(By.Id("roomPrice")).SendKeys("101");
@@ -57,7 +50,7 @@ namespace Challenge_2
         [Test]
         public void VerifyConfirmMessageAppearsWhenBrandingIsUpdated()
         {
-            LoginToAccount();
+            loginPage.Login();
 
             driver.Url = $"{baseUrl}#/admin/branding";
 
@@ -111,14 +104,6 @@ namespace Challenge_2
             //TODO: Remove this
             Thread.Sleep(100);
             Assert.True(CheckCount(driver.FindElements(By.CssSelector(".read-false"))));
-        }
-
-        private void LoginToAccount()
-        {
-            driver.Url = $"{baseUrl}#/admin";
-            driver.FindElement(By.Id("username")).SendKeys("admin");
-            driver.FindElement(By.Id("password")).SendKeys("password");
-            driver.FindElement(By.Id("doLogin")).Click();
         }
 
         private bool CheckCount(IReadOnlyCollection<IWebElement> elements)
