@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -19,13 +20,14 @@ namespace Challenge_2
     public class Challenge2Tests
     {
         private IWebDriver driver;
-        private String baseUrl = "https://automationintesting.online/";
+        private string baseUrl = "https://automationintesting.online/";
 
         #region "Setup and tear down"
         [SetUp]
         public void Init()
         {
             driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
 
         [TearDown]
@@ -35,19 +37,16 @@ namespace Challenge_2
         }
         #endregion
 
+       
 
         //  Test one: Check to see if you can log in with valid credentials
         [Test]
         public void VerifyCanLoginWithValidCredentials()
         {
             LoginToAccount();
-
-            //TODO: Remove this
-            Thread.Sleep(100);
-
-            IWebElement webElement = driver.FindElement(By.ClassName("navbar-collapse"));
-            Console.WriteLine(webElement.Text);
-            Boolean title = webElement.Text.Contains("Rooms");
+           
+            IWebElement roomsLink = driver.FindElement(By.LinkText("Rooms"));
+            Boolean title = roomsLink.Text.Contains("Rooms");
 
             Assert.IsTrue(title);
         }
