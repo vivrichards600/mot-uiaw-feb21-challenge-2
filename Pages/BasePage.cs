@@ -14,6 +14,7 @@ namespace Challenge_2.Pages
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             loginPage = new LoginPage(driver);
+            roomsPage = new RoomsPage(driver);
         }
 
         [TearDown]
@@ -25,6 +26,7 @@ namespace Challenge_2.Pages
         public IWebDriver driver;
         public string baseUrl = "https://automationintesting.online/";
         public LoginPage loginPage;
+        public RoomsPage roomsPage;
 
     }
 }

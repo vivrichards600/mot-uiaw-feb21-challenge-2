@@ -23,11 +23,8 @@ namespace Challenge_2
         public void VerifyCanLoginWithValidCredentials()
         {
             loginPage.Login();
-
-            IWebElement roomsLink = driver.FindElement(By.LinkText("Rooms"));
-            Boolean title = roomsLink.Text.Contains("Rooms");
-
-            Assert.IsTrue(title);
+            
+            Assert.IsTrue(roomsPage.IsDisplayed());
         }
 
         //  Test two: Check to see if rooms are saved and displayed in the UI
