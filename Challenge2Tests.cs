@@ -40,10 +40,7 @@ namespace Challenge_2
         [Test]
         public void VerifyCanLoginWithValidCredentials()
         {
-            driver.Url = $"{baseUrl}#/admin";
-            driver.FindElement(By.Id("username")).SendKeys("admin");
-            driver.FindElement(By.Id("password")).SendKeys("password");
-            driver.FindElement(By.Id("doLogin")).Click();
+            LoginToAccount();
 
             //TODO: Remove this
             Thread.Sleep(100);
@@ -59,10 +56,7 @@ namespace Challenge_2
         [Test]
         public void VerifyRoomsAreSavedAndDisplayedInUI()
         {
-            driver.Url = $"{baseUrl}#/admin";
-            driver.FindElement(By.Id("username")).SendKeys("admin");
-            driver.FindElement(By.Id("password")).SendKeys("password");
-            driver.FindElement(By.Id("doLogin")).Click();
+            LoginToAccount();
 
             //TODO: Remove this
             Thread.Sleep(100);
@@ -81,10 +75,7 @@ namespace Challenge_2
         [Test]
         public void VerifyConfirmMessageAppearsWhenBrandingIsUpdated()
         {
-            driver.Url = $"{baseUrl}#/admin";
-            driver.FindElement(By.Id("username")).SendKeys("admin");
-            driver.FindElement(By.Id("password")).SendKeys("password");
-            driver.FindElement(By.Id("doLogin")).Click();
+            LoginToAccount();
 
             driver.Url = $"{baseUrl}#/admin/branding";
 
@@ -138,6 +129,14 @@ namespace Challenge_2
             //TODO: Remove this
             Thread.Sleep(100);
             Assert.True(CheckCount(driver.FindElements(By.CssSelector(".read-false"))));
+        }
+
+        private void LoginToAccount()
+        {
+            driver.Url = $"{baseUrl}#/admin";
+            driver.FindElement(By.Id("username")).SendKeys("admin");
+            driver.FindElement(By.Id("password")).SendKeys("password");
+            driver.FindElement(By.Id("doLogin")).Click();
         }
 
         private bool CheckCount(IReadOnlyCollection<IWebElement> elements)
