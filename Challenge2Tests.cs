@@ -33,13 +33,9 @@ namespace Challenge_2
         {
             loginPage.Login();
 
-            driver.FindElement(By.Id("roomNumber")).SendKeys("101");
-            driver.FindElement(By.Id("roomPrice")).SendKeys("101");
-            driver.FindElement(By.Id("createRoom")).Click();
-
-            Thread.Sleep(100);
-
-            Assert.That(driver.FindElements(By.ClassName(".detail")).Count != 1);
+            roomsPage.CreateBooking();
+         
+            Assert.That(roomsPage.ContainsBookings());
         }
 
 
