@@ -1,7 +1,6 @@
+using Challenge_2.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -17,34 +16,18 @@ namespace Challenge_2
     //    Page Object Models and implicit vs. explicit waits, as well as NUnit features that can make things
     //    easier to maintain
 
-    public class Challenge2Tests
+    public class Challenge2Tests : BasePage
     {
-        private IWebDriver driver;
-        private string baseUrl = "https://automationintesting.online/";
-
-        #region "Setup and tear down"
-        [SetUp]
-        public void Init()
-        {
-            driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-        }
-
-        [TearDown]
-        public void Cleanup()
-        {
-            driver.Quit();
-        }
-        #endregion
-
+      
        
 
         //  Test one: Check to see if you can log in with valid credentials
         [Test]
         public void VerifyCanLoginWithValidCredentials()
         {
-            LoginToAccount();
-           
+            loginPage.Login();
+
+
             IWebElement roomsLink = driver.FindElement(By.LinkText("Rooms"));
             Boolean title = roomsLink.Text.Contains("Rooms");
 
