@@ -32,7 +32,6 @@ namespace Challenge_2
         public void VerifyRoomsAreSavedAndDisplayedInUI()
         {
             loginPage.Login();
-
             roomsPage.CreateBooking();
          
             Assert.That(roomsPage.ContainsBookings());

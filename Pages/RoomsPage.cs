@@ -24,10 +24,7 @@ namespace Challenge_2.Pages
             CreateRoomButton.Click();
         }
 
-        public bool ContainsBookings()
-        {
-            return Bookings.Count != 1;
-        }
-    
+        public bool ContainsBookings() => Bookings.Count != 1;
+
     }
 }
