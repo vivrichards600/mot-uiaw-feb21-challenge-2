@@ -53,7 +53,6 @@ namespace Challenge_2
             Boolean title = webElement.Text.Contains("Rooms");
 
             Assert.IsTrue(title);
-            driver.Close();
         }
 
         //  Test two: Check to see if rooms are saved and displayed in the UI
@@ -75,7 +74,6 @@ namespace Challenge_2
             Thread.Sleep(100);
 
             Assert.That(driver.FindElements(By.ClassName(".detail")).Count != 1);
-            driver.Close();
         }
 
 
@@ -108,7 +106,6 @@ namespace Challenge_2
             {
                 Assert.Fail();
             }
-            driver.Close();
         }
 
         //  Test four: Check to see if the contact form shows a success message
@@ -127,7 +124,6 @@ namespace Challenge_2
             //TODO: Look to see how we can remove this
             Thread.Sleep(100);
             Assert.True(driver.FindElement(By.CssSelector(".contact")).Text.Contains("Thanks for getting in touch"));
-            driver.Close();
         }
 
         //  Test five: Check to see if unread messages are bolded
@@ -142,7 +138,6 @@ namespace Challenge_2
             //TODO: Remove this
             Thread.Sleep(100);
             Assert.True(CheckCount(driver.FindElements(By.CssSelector(".read-false"))));
-            driver.Close();
         }
 
         private bool CheckCount(IReadOnlyCollection<IWebElement> elements)
