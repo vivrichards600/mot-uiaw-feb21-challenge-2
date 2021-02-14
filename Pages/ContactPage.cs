@@ -1,5 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Challenge_2.Pages
 {
@@ -8,14 +7,13 @@ namespace Challenge_2.Pages
         private readonly IWebDriver driver;
         public ContactPage(IWebDriver _driver) => driver = _driver;
 
-
-        public IWebElement NameInput => driver.FindElement(By.Id("name"));
-        public IWebElement EmailInput => driver.FindElement(By.Id("email"));
-        public IWebElement PhoneInput => driver.FindElement(By.Id("phone"));
-        public IWebElement SubjectInput => driver.FindElement(By.Id("subject"));
-        public IWebElement DescriptionInput => driver.FindElement(By.Id("description"));
-        public IWebElement SubmitMessageButton => driver.FindElement(By.Id("submitContact"));
-        public IWebElement Confirmation => driver.FindElement(By.CssSelector(".contact h2"));
+        private IWebElement NameInput => driver.FindElement(By.Id("name"));
+        private IWebElement EmailInput => driver.FindElement(By.Id("email"));
+        private IWebElement PhoneInput => driver.FindElement(By.Id("phone"));
+        private IWebElement SubjectInput => driver.FindElement(By.Id("subject"));
+        private IWebElement DescriptionInput => driver.FindElement(By.Id("description"));
+        private IWebElement SubmitMessageButton => driver.FindElement(By.Id("submitContact"));
+        private IWebElement Confirmation => driver.FindElement(By.CssSelector(".contact h2"));
 
         private void GoToPage(string url = "https://automationintesting.online/") => driver.Navigate().GoToUrl(url);
 

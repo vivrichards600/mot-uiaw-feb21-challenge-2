@@ -1,5 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Challenge_2.Pages
 {
@@ -8,9 +7,9 @@ namespace Challenge_2.Pages
         private readonly IWebDriver driver;
         public LoginPage(IWebDriver _driver) => driver = _driver;
 
-        public IWebElement UsernameInput => driver.FindElement(By.Id("username"));
-        public IWebElement PasswordInput => driver.FindElement(By.Id("password"));
-        public IWebElement LoginButton => driver.FindElement(By.Id("doLogin"));
+        private IWebElement UsernameInput => driver.FindElement(By.Id("username"));
+        private IWebElement PasswordInput => driver.FindElement(By.Id("password"));
+        private IWebElement LoginButton => driver.FindElement(By.Id("doLogin"));
         
         private void GoToPage(string url = "https://automationintesting.online/#/admin") => driver.Navigate().GoToUrl(url);
 

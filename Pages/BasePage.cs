@@ -17,18 +17,19 @@ namespace Challenge_2.Pages
             roomsPage = new RoomsPage(driver);
             brandingPage = new BrandingPage(driver);
             contactPage = new ContactPage(driver);
+            messagesPage = new MessagesPage(driver);
         }
 
         [TearDown]
         public void Cleanup() => driver.Quit();
 
-        public IWebDriver driver;
-        public string baseUrl = "https://automationintesting.online/";
+        private IWebDriver driver;
 
         public LoginPage loginPage;
         public RoomsPage roomsPage;
         public BrandingPage brandingPage;
         public ContactPage contactPage;
+        public MessagesPage messagesPage;
 
     }
 }

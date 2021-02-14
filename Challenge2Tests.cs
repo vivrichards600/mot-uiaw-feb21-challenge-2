@@ -1,9 +1,5 @@
 using Challenge_2.Pages;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Threading;
 
 namespace Challenge_2
 {
@@ -24,7 +20,7 @@ namespace Challenge_2
         {
             loginPage.Login();
             
-            Assert.IsTrue(roomsPage.IsDisplayed());
+            Assert.That(roomsPage.IsDisplayed());
         }
 
         //  Test two: Check to see if rooms are saved and displayed in the UI
@@ -37,7 +33,6 @@ namespace Challenge_2
             Assert.That(roomsPage.ContainsBookings());
         }
 
-
         //  Test three: Check to see the confirm message appears when branding is updated
         [Test]
         public void VerifyConfirmMessageAppearsWhenBrandingIsUpdated()
@@ -45,7 +40,7 @@ namespace Challenge_2
             loginPage.Login();
             brandingPage.UpdateBranding();
 
-            Assert.IsTrue(brandingPage.IsUpdated());
+            Assert.That(brandingPage.IsUpdated());
         }
 
         //  Test four: Check to see if the contact form shows a success message
@@ -54,31 +49,17 @@ namespace Challenge_2
         {
             contactPage.SendMessage();
 
-            Assert.IsTrue(contactPage.MessageIsSent());
+            Assert.That(contactPage.MessageIsSent());
         }
 
         //  Test five: Check to see if unread messages are bolded
         [Test]
         public void VerifyUnreadMessagesAreBolded()
-        {
-            driver.Url = $"{baseUrl}#/admin/messages";
-            driver.FindElement(By.Id("username")).SendKeys("admin");
-            driver.FindElement(By.Id("password")).SendKeys("password");
-            driver.FindElement(By.Id("doLogin")).Click();
-
-            //TODO: Remove this
-            Thread.Sleep(100);
-            Assert.True(CheckCount(driver.FindElements(By.CssSelector(".read-false"))));
-        }
-
-        private bool CheckCount(IReadOnlyCollection<IWebElement> elements)
-        {
-            if (elements.Count >= 1)
-            {
-                return true;
-            }
-
-            return false;
+        { 
+            loginPage.Login();
+            messagesPage.GoToPage();
+         
+            Assert.That(messagesPage.AllUnreadMessagesAreBold);
         }
     }
 }
