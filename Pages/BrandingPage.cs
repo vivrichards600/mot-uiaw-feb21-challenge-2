@@ -15,10 +15,11 @@ namespace Challenge_2.Pages
         public void UpdateBranding()
         {
             BrandingLink.Click();
+            NameInput.Clear();
             NameInput.SendKeys("Test");
             UpdateBrandingButton.Click();
         }
 
-        public bool IsUpdated() => ConfirmationDialogue.Text.Contains("Branding updated!");
+        public bool UpdatedConfirmationDisplayed() => ConfirmationDialogue.Text.Contains("Branding updated!");
     }
 }

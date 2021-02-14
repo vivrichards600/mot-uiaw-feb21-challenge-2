@@ -40,7 +40,7 @@ namespace Challenge_2
             loginPage.Login();
             brandingPage.UpdateBranding();
 
-            Assert.That(brandingPage.IsUpdatedAndConfirmationDisplayed());
+            Assert.That(brandingPage.UpdatedConfirmationDisplayed());
         }
 
         //  Test four: Check to see if the contact form shows a success message
