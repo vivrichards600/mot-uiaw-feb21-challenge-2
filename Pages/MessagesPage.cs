@@ -12,7 +12,7 @@ namespace Challenge_2.Pages
 
         private IList<IWebElement> Messages => driver.FindElements(By.CssSelector(".read-false"));
 
-        //TODO: Refactor. This type of test is best done using visual testing
+        //TODO: This type of test is best done using visual testing
         public bool AllUnreadMessagesAreBold()
         {
             foreach (IWebElement message in Messages)

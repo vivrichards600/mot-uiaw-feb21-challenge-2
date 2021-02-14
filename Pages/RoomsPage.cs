@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using OpenQA.Selenium;
 
 namespace Challenge_2.Pages
@@ -12,20 +14,32 @@ namespace Challenge_2.Pages
         private IWebElement RoomNumberInput => driver.FindElement(By.Id("roomNumber"));
         private IWebElement RoomPriceInput => driver.FindElement(By.Id("roomPrice"));
         private IWebElement CreateRoomButton => driver.FindElement(By.Id("createRoom"));
-        private IList<IWebElement> Bookings => driver.FindElements(By.ClassName(".details"));
+
+        private IList<IWebElement> Bookings => driver.FindElements(By.XPath("//*[@data-type='room']"));
 
         public bool IsDisplayed() => RoomsLink.Text.Contains("Rooms");
 
-        //TODO: might be nice to make the data dynamic
         public void CreateBooking()
         {
-            RoomNumberInput.SendKeys("101");
-            RoomPriceInput.SendKeys("101");
+            RoomNumberInput.SendKeys(roomNumber);
+            RoomPriceInput.SendKeys(roomPrice);
             CreateRoomButton.Click();
         }
 
-        //TODO: might be nice to confirm dynamically added values are there as this check currently is a bit rubbish
-        public bool ContainsBookings() => Bookings.Count != 1;
+        public bool ContainsNewBooking()
+        {
+            var lastBooking = Bookings.Last().Text;
+            return lastBooking.Contains(roomNumber) && lastBooking.Contains(roomPrice);
+        }
 
+        public void GenerateTestData()
+        {
+            Random rnd = new Random();
+            roomNumber = rnd.Next(100, 999).ToString();
+            roomPrice = rnd.Next(70, 200).ToString();
+        }
+
+        private string roomNumber;
+        private string roomPrice;
     }
 }

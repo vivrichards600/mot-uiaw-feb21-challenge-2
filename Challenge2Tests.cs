@@ -30,7 +30,7 @@ namespace Challenge_2
             loginPage.Login();
             roomsPage.CreateBooking();
          
-            Assert.That(roomsPage.ContainsBookings());
+            Assert.That(roomsPage.ContainsNewBooking());
         }
 
         //  Test three: Check to see the confirm message appears when branding is updated
@@ -40,7 +40,7 @@ namespace Challenge_2
             loginPage.Login();
             brandingPage.UpdateBranding();
 
-            Assert.That(brandingPage.IsUpdated());
+            Assert.That(brandingPage.IsUpdatedAndConfirmationDisplayed());
         }
 
         //  Test four: Check to see if the contact form shows a success message

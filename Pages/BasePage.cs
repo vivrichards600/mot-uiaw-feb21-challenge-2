@@ -18,6 +18,8 @@ namespace Challenge_2.Pages
             brandingPage = new BrandingPage(driver);
             contactPage = new ContactPage(driver);
             messagesPage = new MessagesPage(driver);
+
+            roomsPage.GenerateTestData();
         }
 
         [TearDown]
@@ -30,6 +32,5 @@ namespace Challenge_2.Pages
         public BrandingPage brandingPage;
         public ContactPage contactPage;
         public MessagesPage messagesPage;
-
     }
 }

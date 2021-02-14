@@ -19,6 +19,7 @@ namespace Challenge_2.Pages
 
         public void SendMessage() {
             GoToPage();
+            //TODO: Could consider using dynamic data
             NameInput.SendKeys("TEST123");
             EmailInput.SendKeys("TEST123@TEST.COM");
             PhoneInput.SendKeys("01212121311");
