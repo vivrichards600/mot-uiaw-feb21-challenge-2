@@ -17,6 +17,7 @@ namespace Challenge_2.Pages
 
         public bool IsDisplayed() => RoomsLink.Text.Contains("Rooms");
 
+        //TODO: might be nice to make the data dynamic
         public void CreateBooking()
         {
             RoomNumberInput.SendKeys("101");
@@ -24,6 +25,7 @@ namespace Challenge_2.Pages
             CreateRoomButton.Click();
         }
 
+        //TODO: might be nice to confirm dynamically added values are there as this check currently is a bit rubbish
         public bool ContainsBookings() => Bookings.Count != 1;
 
     }
