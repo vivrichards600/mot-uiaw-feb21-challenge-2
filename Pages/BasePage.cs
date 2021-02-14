@@ -16,6 +16,7 @@ namespace Challenge_2.Pages
             loginPage = new LoginPage(driver);
             roomsPage = new RoomsPage(driver);
             brandingPage = new BrandingPage(driver);
+            contactPage = new ContactPage(driver);
         }
 
         [TearDown]
@@ -23,9 +24,11 @@ namespace Challenge_2.Pages
 
         public IWebDriver driver;
         public string baseUrl = "https://automationintesting.online/";
+
         public LoginPage loginPage;
         public RoomsPage roomsPage;
         public BrandingPage brandingPage;
+        public ContactPage contactPage;
 
     }
 }

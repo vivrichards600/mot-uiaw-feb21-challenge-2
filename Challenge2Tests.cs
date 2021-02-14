@@ -52,18 +52,9 @@ namespace Challenge_2
         [Test]
         public void VerifyContactFormShowsSuccessMessage()
         {
-            driver.Url = "https://automationintesting.online/";
-            driver.FindElement(By.Id("name")).SendKeys("TEST123");
-            driver.FindElement(By.Id("email")).SendKeys("TEST123@TEST.COM");
-            driver.FindElement(By.Id("phone")).SendKeys("01212121311");
-            driver.FindElement(By.Id("subject")).SendKeys("TEsTEST");
-            driver.FindElement(By.Id("description")).SendKeys("TEsTESTTEsTESTTEsTEST");
+            contactPage.SendMessage();
 
-            driver.FindElement(By.Id("submitContact")).Click();
-
-            //TODO: Look to see how we can remove this
-            Thread.Sleep(100);
-            Assert.True(driver.FindElement(By.CssSelector(".contact")).Text.Contains("Thanks for getting in touch"));
+            Assert.IsTrue(contactPage.MessageIsSent());
         }
 
         //  Test five: Check to see if unread messages are bolded
