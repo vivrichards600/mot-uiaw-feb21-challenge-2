@@ -43,27 +43,9 @@ namespace Challenge_2
         public void VerifyConfirmMessageAppearsWhenBrandingIsUpdated()
         {
             loginPage.Login();
+            brandingPage.UpdateBranding();
 
-            driver.Url = $"{baseUrl}#/admin/branding";
-
-            //TODO: Remove this
-            Thread.Sleep(200);
-
-            driver.FindElement(By.Id("name")).SendKeys("Test");
-            driver.FindElement(By.Id("updateBranding")).Click();
-
-            Thread.Sleep(100);
-
-            int count = driver.FindElements(By.XPath("//button[text()=\"Close\"]")).Count;
-
-            if (count == 1)
-            {
-                Assert.Pass();
-            }
-            else
-            {
-                Assert.Fail();
-            }
+            Assert.IsTrue(brandingPage.IsUpdated());
         }
 
         //  Test four: Check to see if the contact form shows a success message

@@ -11,7 +11,7 @@ namespace Challenge_2.Pages
         public IWebElement UsernameInput => driver.FindElement(By.Id("username"));
         public IWebElement PasswordInput => driver.FindElement(By.Id("password"));
         public IWebElement LoginButton => driver.FindElement(By.Id("doLogin"));
-
+        
         private void GoToPage(string url = "https://automationintesting.online/#/admin") => driver.Navigate().GoToUrl(url);
 
         public void Login()
