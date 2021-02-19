@@ -13,7 +13,7 @@ namespace Challenge_2.Pages
             driver = new ChromeDriver();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
 
-            loginPage = new LoginPage(driver);
+            adminPage = new AdminPage(driver);
             roomsPage = new RoomsPage(driver);
             brandingPage = new BrandingPage(driver);
             contactPage = new ContactPage(driver);
@@ -27,7 +27,7 @@ namespace Challenge_2.Pages
 
         private IWebDriver driver;
 
-        public LoginPage loginPage;
+        public AdminPage adminPage;
         public RoomsPage roomsPage;
         public BrandingPage brandingPage;
         public ContactPage contactPage;

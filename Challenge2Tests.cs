@@ -18,7 +18,8 @@ namespace Challenge_2
         [Test]
         public void VerifyCanLoginWithValidCredentials()
         {
-            loginPage.Login();
+            adminPage.GoToPage();
+            adminPage.Login();
             
             Assert.That(roomsPage.IsDisplayed());
         }
@@ -27,7 +28,7 @@ namespace Challenge_2
         [Test]
         public void VerifyRoomsAreSavedAndDisplayedInUI()
         {
-            loginPage.Login();
+            adminPage.Login();
             roomsPage.CreateBooking();
          
             Assert.That(roomsPage.ContainsNewBooking());
@@ -37,7 +38,7 @@ namespace Challenge_2
         [Test]
         public void VerifyConfirmMessageAppearsWhenBrandingIsUpdated()
         {
-            loginPage.Login();
+            adminPage.Login();
             brandingPage.UpdateBranding();
 
             Assert.That(brandingPage.UpdatedConfirmationDisplayed());
@@ -56,7 +57,7 @@ namespace Challenge_2
         [Test]
         public void VerifyUnreadMessagesAreBolded()
         { 
-            loginPage.Login();
+            adminPage.Login();
             messagesPage.GoToPage();
          
             Assert.That(messagesPage.AllUnreadMessagesAreBold);
