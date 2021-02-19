@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+
 
 namespace Challenge_2.Pages
 {
@@ -17,6 +19,9 @@ namespace Challenge_2.Pages
 
         private IList<IWebElement> Bookings => driver.FindElements(By.XPath("//*[@data-type='room']"));
 
+        //TODO: Refactor
+        IWebElement bookingsContainer => driver.FindElement(By.XPath("//*[@id='root']/div[2]/div"));
+
         public bool IsDisplayed() => RoomsLink.Text.Contains("Rooms");
 
         public void CreateBooking()
@@ -26,8 +31,12 @@ namespace Challenge_2.Pages
             CreateRoomButton.Click();
         }
 
+        //TODO: Refactor
         public bool ContainsNewBooking()
         {
+            var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 30));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement(bookingsContainer, roomNumber));
+
             var lastBooking = Bookings.Last().Text;
             return lastBooking.Contains(roomNumber) && lastBooking.Contains(roomPrice);
         }

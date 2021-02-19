@@ -11,7 +11,7 @@ namespace Challenge_2.Pages
         public void Init()
         {
             driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
 
             loginPage = new LoginPage(driver);
             roomsPage = new RoomsPage(driver);
