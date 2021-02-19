@@ -15,10 +15,9 @@ namespace Challenge_2.Pages
         private IWebElement SubmitMessageButton => driver.FindElement(By.Id("submitContact"));
         private IWebElement Confirmation => driver.FindElement(By.CssSelector(".contact h2"));
 
-        private void GoToPage(string url = "https://automationintesting.online/") => driver.Navigate().GoToUrl(url);
+        public void GoToPage(string url = "https://automationintesting.online/") => driver.Navigate().GoToUrl(url);
 
         public void SendMessage() {
-            GoToPage();
             //TODO: Could consider using dynamic data
             NameInput.SendKeys("TEST123");
             EmailInput.SendKeys("TEST123@TEST.COM");

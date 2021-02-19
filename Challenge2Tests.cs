@@ -39,7 +39,9 @@ namespace Challenge_2
         [Test]
         public void VerifyConfirmMessageAppearsWhenBrandingIsUpdated()
         {
+            adminPage.GoToPage();
             adminPage.Login();
+            brandingPage.GoToPage();
             brandingPage.UpdateBranding();
 
             Assert.That(brandingPage.UpdatedConfirmationDisplayed());
@@ -49,6 +51,7 @@ namespace Challenge_2
         [Test]
         public void VerifyContactFormShowsSuccessMessage()
         {
+            contactPage.GoToPage();
             contactPage.SendMessage();
 
             Assert.That(contactPage.MessageIsSent());
@@ -57,7 +60,8 @@ namespace Challenge_2
         //  Test five: Check to see if unread messages are bolded
         [Test]
         public void VerifyUnreadMessagesAreBolded()
-        { 
+        {
+            adminPage.GoToPage();
             adminPage.Login();
             messagesPage.GoToPage();
          

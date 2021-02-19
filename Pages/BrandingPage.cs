@@ -12,9 +12,10 @@ namespace Challenge_2.Pages
         private IWebElement UpdateBrandingButton => driver.FindElement(By.Id("updateBranding"));
         private IWebElement ConfirmationDialogue => driver.FindElement(By.ClassName("ReactModal__Content"));
 
+        public void GoToPage() => BrandingLink.Click();
+
         public void UpdateBranding()
         {
-            BrandingLink.Click();
             NameInput.Clear();
             NameInput.SendKeys("Test");
             UpdateBrandingButton.Click();
