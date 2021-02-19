@@ -28,6 +28,7 @@ namespace Challenge_2
         [Test]
         public void VerifyRoomsAreSavedAndDisplayedInUI()
         {
+            adminPage.GoToPage();
             adminPage.Login();
             roomsPage.CreateBooking();
          
