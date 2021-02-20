@@ -40,7 +40,6 @@ namespace Challenge_2.Pages
             CreateRoomButton.Click();
         }
 
-        //TODO: Refactor
         public bool ContainsNewBooking()
         {
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 30));
