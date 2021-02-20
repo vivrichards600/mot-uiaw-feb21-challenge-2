@@ -21,7 +21,7 @@ namespace Challenge_2
             adminPage.GoToPage();
             adminPage.Login();
             
-            Assert.That(roomsPage.IsDisplayed());
+            Assert.That(roomsPage.IsDisplayed);
         }
 
         //  Test two: Check to see if rooms are saved and displayed in the UI
@@ -32,7 +32,7 @@ namespace Challenge_2
             adminPage.Login();
             roomsPage.CreateBooking();
          
-            Assert.That(roomsPage.ContainsNewBooking());
+            Assert.That(roomsPage.ContainsNewBooking);
         }
 
         //  Test three: Check to see the confirm message appears when branding is updated
@@ -44,7 +44,7 @@ namespace Challenge_2
             brandingPage.GoToPage();
             brandingPage.UpdateBranding();
 
-            Assert.That(brandingPage.UpdatedConfirmationDisplayed());
+            Assert.That(brandingPage.DisplaysConfirmationMessage);
         }
 
         //  Test four: Check to see if the contact form shows a success message
@@ -52,20 +52,23 @@ namespace Challenge_2
         public void VerifyContactFormShowsSuccessMessage()
         {
             contactPage.GoToPage();
-            contactPage.SendMessage();
+            contactPage.SendNewMessage();
 
-            Assert.That(contactPage.MessageIsSent());
+            Assert.That(contactPage.DisplaysConfirmationMessage);
         }
 
         //  Test five: Check to see if unread messages are bolded
         [Test]
-        public void VerifyUnreadMessagesAreBolded()
+        public void VerifyUnreadMessagesAreBoldedDynamic()
         {
+            contactPage.GoToPage();
+            contactPage.SendNewMessage();
+
             adminPage.GoToPage();
             adminPage.Login();
             messagesPage.GoToPage();
-         
-            Assert.That(messagesPage.AllUnreadMessagesAreBold);
+
+            Assert.That(messagesPage.DisplaysUnreadMessagesBold);
         }
     }
 }

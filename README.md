@@ -52,3 +52,4 @@ Some of the below were out of scope for this challenge. If I had more time and o
 * Looked at some other tests which might add value and add them
 * Checked if some of the existing tests could be refactored to further improve readability, this is always easier when someone else is trying to read and understand your code via reviews or pairing etc
 * Looked at visual testing and see if this could have helped in any way, the checking unread emails were bold is certainly something viual testing is there for
+* Address the remaining todos in the test suite

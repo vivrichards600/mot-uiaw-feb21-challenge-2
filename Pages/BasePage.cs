@@ -13,13 +13,14 @@ namespace Challenge_2.Pages
             driver = new ChromeDriver();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
 
-            adminPage = new AdminPage(driver);
-            roomsPage = new RoomsPage(driver);
-            brandingPage = new BrandingPage(driver);
-            contactPage = new ContactPage(driver);
-            messagesPage = new MessagesPage(driver);
+            //TODO: Look to move this from here
+            GenerateTestData();
 
-            roomsPage.GenerateTestData();
+            adminPage = new AdminPage(driver);
+            roomsPage = new RoomsPage(driver, roomNumber, roomPrice);
+            brandingPage = new BrandingPage(driver);
+            contactPage = new ContactPage(driver, senderName, messageSubject);
+            messagesPage = new MessagesPage(driver, senderName, messageSubject);
         }
 
         [TearDown]
@@ -32,5 +33,23 @@ namespace Challenge_2.Pages
         public BrandingPage brandingPage;
         public ContactPage contactPage;
         public MessagesPage messagesPage;
+
+        #region "Generate test data"
+        public void GenerateTestData()
+        {
+            //TODO: Not the most realisitic test data but random, will do for now
+            Random rnd = new Random();
+            senderName = "MoT " + rnd.Next(1, 999).ToString();
+            messageSubject = "Automation Week " + rnd.Next(70, 200).ToString();
+            roomNumber = rnd.Next(100, 999).ToString();
+            roomPrice = rnd.Next(70, 200).ToString();
+        }
+
+        private string senderName;
+        private string messageSubject;
+        private string roomNumber;
+        private string roomPrice;
+        #endregion
+
     }
 }

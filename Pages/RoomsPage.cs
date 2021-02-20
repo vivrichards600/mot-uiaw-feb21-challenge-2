@@ -10,7 +10,16 @@ namespace Challenge_2.Pages
     public class RoomsPage
     {
         private readonly IWebDriver driver;
-        public RoomsPage(IWebDriver _driver) => driver = _driver;
+
+        private readonly string roomNumber;
+        private readonly string roomPrice;
+
+        public RoomsPage(IWebDriver _driver, string _roomNumber, string _roomPrice)
+        {
+            driver = _driver;
+            roomNumber = _roomNumber;
+            roomPrice = _roomPrice;
+        }
 
         public IWebElement RoomsLink => driver.FindElement(By.LinkText("Rooms"));
         private IWebElement RoomNumberInput => driver.FindElement(By.Id("roomNumber"));
@@ -19,8 +28,8 @@ namespace Challenge_2.Pages
 
         private IList<IWebElement> Bookings => driver.FindElements(By.XPath("//*[@data-type='room']"));
 
-        //TODO: Refactor
-        IWebElement bookingsContainer => driver.FindElement(By.XPath("//*[@id='root']/div[2]/div"));
+        //TODO: Refactor, markup not best, selector not great
+        IWebElement BookingsContainer => driver.FindElement(By.XPath("//*[@id='root']/div[2]/div"));
 
         public bool IsDisplayed() => RoomsLink.Text.Contains("Rooms");
 
@@ -35,20 +44,11 @@ namespace Challenge_2.Pages
         public bool ContainsNewBooking()
         {
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 30));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement(bookingsContainer, roomNumber));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement(BookingsContainer, roomNumber));
 
             var lastBooking = Bookings.Last().Text;
             return lastBooking.Contains(roomNumber) && lastBooking.Contains(roomPrice);
         }
 
-        public void GenerateTestData()
-        {
-            Random rnd = new Random();
-            roomNumber = rnd.Next(100, 999).ToString();
-            roomPrice = rnd.Next(70, 200).ToString();
-        }
-
-        private string roomNumber;
-        private string roomPrice;
     }
 }
